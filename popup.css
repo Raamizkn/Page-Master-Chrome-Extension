@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body {
+  width: 400px;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  background: #021216;
+  font-family: "Poppins", sans-serif;
+  color: #e1e1e1;
+  --primary-color: #58d0ee;;
+  --hover-color: #00FFFF;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  padding: 15px;
+  gap: 12px;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  background: #252525;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.message {
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 8px;
+  position: relative;
+  line-height: 1.5;
+  font-size: 0.95em;
+  transition: transform 0.2s ease;
+}
+
+.message:hover {
+  transform: translateX(4px);
+}
+
+.user-message {
+  background: var(--primary-color);
+  margin-left: 30px;
+  border: 1px solid var(--hover-color);
+}
+
+.ai-message {
+  background: #333;
+  border: 1px solid #404040;
+  margin-right: 10px;
+}
+
+.message::before {
+  font-family: "Font Awesome 6 Free";
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9em;
+  color: var(--primary-color);
+}
+
+.user-message::before {
+  content: "\f007"; /* user icon */
+}
+
+.ai-message::before {
+  content: "\f543"; /* robot icon */
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid #3d3d3d;
+  border-radius: 25px;
+  background: #2d2d2d;
+  color: #fff;
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 164, 255, 0.1);
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#send-btn {
+  background: var(--primary-color);
+  padding: 12px 18px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#send-btn:hover {
+  background: var(--hover-color);
+  transform: scale(1.05);
+}
+
+#send-btn i {
+  font-size: 1.1em;
+}
+
+.settings-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #666;
+  padding: 8px;
+}
+
+.settings-btn:hover {
+  color: var(--primary-color);
+  transform: rotate(90deg);
+}
+
+.status-bar {
+  font-size: 0.85em;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #252525;
+  border-radius: 6px;
+  margin-top: auto;
+}
+
+.fa-spin {
+  animation: fa-spin 2s infinite linear;
+}
+
+.message.error {
+  background: #402020;
+  border-color: #ff4444;
+  animation: error-shake 0.4s ease;
+}
+
+@keyframes error-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3d3d3d;
+  border-radius: 4px;
+}
+
+/* Updated CSS with copy button functionality */
+.message {
+  position: relative;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 8px;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+
+.ai-message {
+  background: #333;
+  border: 1px solid #404040;
+  padding-right: 40px; /* Space for copy button */
+}
+
+.copy-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #888;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.message:hover .copy-btn {
+  opacity: 1;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--primary-color);
+}
+
+.copy-success .copy-btn i {
+  color: #00ff00 !important;
+}
+
+/* Remove settings button related CSS */
